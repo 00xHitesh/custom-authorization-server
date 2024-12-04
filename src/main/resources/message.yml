@@ -1,0 +1,9 @@
+## custom messages
+#USER_SERVICE:
+#  USER_NOT_FOUND: "User not found."
+#  INCORRECT_PASSWORD: "Existing password is incorrect."
+#  INVALID_PASSWORD: "New password is invalid."
+#  PASSWORD_CHANGED: "Password changed successfully."
+#  INVALID_ACTION: "Not authorized to change password."
+#  USER_ACTIVATED: "User activated successfully."
+#  USER_DEACTIVATED: "User deactivated successfully."

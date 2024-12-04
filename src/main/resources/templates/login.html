@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Default sign in</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    </head>
+
+    <body>
+        <div class="loginWrapper" th:style="'background:url(' + @{/images/bg.svg} + ') no-repeat transparent;'">
+            <div class="loginContainer">
+                <div class="logoSection">
+                    <img alt="Default logo" th:src="@{/images/logo.png}" class="amplify-image" />
+                </div>
+
+                <div class="loginSection">
+                    <div class="signInTitle">
+                        <div class="amplify-heading">Sign in </div>
+                        <div class="subText">to your account</div>
+                    </div>
+                    <form  th:action="@{/login}" method="post" onsubmit="return handleSubmit(event)">
+                        <input type="text" name="username" placeholder="Email" />
+                        <input  id="passField" style="display: none;" type="password" name="password" placeholder="Password" />
+
+                        <div th:if="${param.error}" class="error">
+                            Invalid Email and password.
+                        </div>
+                        <div th:if="${param.logout}" class="info">
+                            You have been logged out.
+                        </div>
+
+                        <button id="submit" type="submit">
+                            <div class="overlay" style="visibility: hidden;">
+                                <div class="dot-pulse"></div>
+                            </div>
+
+                            <span class="pseudo-text-gray">Sign in </span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="footerSection">
+                    © 2024, Hitesh Narkhede
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var ssoDomains = JSON.parse("[[${ssoDomains}]]".replace(/&quot;/g, '"'));
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        </script>
+        <script th:src="@{/js/redirection.js}"></script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/auth_server
+    testWhileIdle: 'true'
+    validationQuery: SELECT 1
+    password: admin123
+    datasource-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'true'
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: 'false'
+ #   hibernate.ddl-auto: create
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+
+#logging:
+#  level:
+#    org.springframework.security: TRACE
+
+# custom messages
+USER_SERVICE:
+  USER_NOT_FOUND: "User not found."
+  INCORRECT_PASSWORD: "Existing password is incorrect."
+  INVALID_PASSWORD: "New password is invalid."
+  PASSWORD_CHANGED: "Password changed successfully."
+  INVALID_ACTION: "Not authorized to change password."
+  USER_ACTIVATED: "User activated successfully."
+  USER_DEACTIVATED: "User deactivated successfully."
